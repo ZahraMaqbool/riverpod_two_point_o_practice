@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+// import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_two_o_with_apis_f16_practice/controller/post_controller.dart';
 import 'package:riverpod_two_o_with_apis_f16_practice/controller/post_states.dart';
@@ -19,11 +19,7 @@ class _POstPageState extends ConsumerState<POstPage> {
 
   @override
   Widget build(BuildContext context) {
-    SchedulerBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        return fetchPost();
-      },
-    );
+    
     PostStates postStates = ref.watch(postControllerProvider);
     return Scaffold(
       body: switch (postStates) {

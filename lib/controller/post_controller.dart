@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:riverpod_two_o_with_apis_f16_practice/controller/post_states.dart';
 import 'package:riverpod_two_o_with_apis_f16_practice/services/post_api_provider.dart';
@@ -10,7 +11,11 @@ class PostController extends _$PostController {
   final PostApiService _apiService = PostApiService();
   @override
   PostStates build() {
-    fecthPosts();
+    SchedulerBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        return fecthPosts();
+      },
+    );
     return PostLoadingState();
   }
 
