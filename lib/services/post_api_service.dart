@@ -9,7 +9,7 @@ class PostApiService extends PostApiProvider {
     return postApiService??=PostApiService._internal();
    }
 
-    Future<List<PostModel>> fetchPOst()async{
+    Future<List<PostModel>> fetchPosts()async{
       var post = await fetch() as List;
       var data=post.map((e) => PostModel.fromJson(e)).toList();
       return data;
